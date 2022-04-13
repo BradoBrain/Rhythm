@@ -24,13 +24,16 @@ class AudioControl {
         audioEngine.connect(audioPlayer, to: audioEngine.mainMixerNode, format: clickFile.processingFormat)
         
         try! audioEngine.start()
+        
+        // To play sound when silent mode on device
+        try! AVAudioSession.sharedInstance().setCategory(.playback)
     }
     // Compute bar buffer
-    private func barBuffer(bpm: Double) -> AVAudioPCMBuffer {
+    private func barBuffer(bpm: UInt32) -> AVAudioPCMBuffer {
         clickFile.framePosition = 0
         
         //Длина одного beat
-        let beatLength = AVAudioFrameCount(clickFile.processingFormat.sampleRate * 60 / bpm)
+        let beatLength = AVAudioFrameCount(UInt32(clickFile.processingFormat.sampleRate) * 60 / bpm)
         
         //Длина одного click
         let clickBuffer = AVAudioPCMBuffer(pcmFormat: clickFile.processingFormat, frameCapacity: beatLength)!
@@ -57,7 +60,7 @@ class AudioControl {
     
     func play(bpm: Double) {
         
-        let buffer = barBuffer(bpm: bpm)
+        let buffer = barBuffer(bpm: UInt32(bpm))
         
         if audioPlayer.isPlaying {
             audioPlayer.scheduleBuffer(buffer, at: nil, options: .interruptsAtLoop, completionHandler: nil)

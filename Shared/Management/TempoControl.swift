@@ -9,43 +9,32 @@ import Foundation
 
 class TempoControl: ObservableObject {
     
-    func whichTempo(pickerTempo: String, sliderTempo: Double) -> Double {
-        if (pickerTempo == "Customize") {
-            return sliderTempo
-        }
-        else {
-            return Double(pickerTempo)!
-        }
-    }
-    
     func whichTempoMarking(tempo: Double) -> String {
         switch(tempo) {
-        case 200:
-            return "Prestissimo"
-        case 168...:
-            return "Presto"
-        case 156...:
-            return "Vivace"
-        case 120...:
-            return "Allegro"
-        case 108...:
-            return "Moderato"
-        case 76...:
-            return "Andante"
-        case 66...:
-            return "Adagio"
-        case 60...:
-            return "Larghetto"
-        case 45...:
-            return "Lento"
-        case 40...:
-            return "Largo"
-        case 25...:
-            return "Grave"
-        case 20...:
-            return "Adagissimo"
-        default:
-            return "Metronome"
+            case 24...40:
+                return "Adagissimo"
+            case 25...45:
+                return "Grave"
+            case 46...60:
+                return "Lento"
+            case 61...66:
+                return "Larghetto"
+            case 67...76:
+                return "Adagio"
+            case 77...108:
+                return "Andante"
+            case 109...120:
+                return "Moderato"
+            case 121...156:
+                return "Allegro"
+            case 157...176:
+                return "Vivace"
+            case 177...200:
+                return "Presto"
+            case 201...:
+                return "Prestissimo"
+            default:
+                return "Larghissimo"
         }
     }
     

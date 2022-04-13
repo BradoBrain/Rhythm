@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F4B6FA42805B32E006BB31F /* CustomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4B6FA32805B32E006BB31F /* CustomSliderView.swift */; };
+		0F4B6FA52805B32E006BB31F /* CustomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4B6FA32805B32E006BB31F /* CustomSliderView.swift */; };
 		0F7D7FB12803473800FA8336 /* RhythmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D7FA12803473300FA8336 /* RhythmApp.swift */; };
 		0F7D7FB22803473800FA8336 /* RhythmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D7FA12803473300FA8336 /* RhythmApp.swift */; };
 		0F7D7FB32803473800FA8336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D7FA22803473300FA8336 /* ContentView.swift */; };
@@ -17,11 +19,18 @@
 		0F7D7FC3280348DA00FA8336 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F7D7FC1280348DA00FA8336 /* click.mp3 */; };
 		0F7D7FC728034A1200FA8336 /* AudioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D7FC628034A1200FA8336 /* AudioControl.swift */; };
 		0F7D7FC828034A1200FA8336 /* AudioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D7FC628034A1200FA8336 /* AudioControl.swift */; };
+		0F898220280717220019D066 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F89821F280717220019D066 /* PlayButtonView.swift */; };
+		0F898221280717220019D066 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F89821F280717220019D066 /* PlayButtonView.swift */; };
+		0F8982232807511E0019D066 /* SizePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8982222807511E0019D066 /* SizePickerView.swift */; };
+		0F8982242807511E0019D066 /* SizePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8982222807511E0019D066 /* SizePickerView.swift */; };
 		0FA54AFF280366A9005EAAD1 /* TempoControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA54AFE280366A9005EAAD1 /* TempoControl.swift */; };
 		0FA54B00280366A9005EAAD1 /* TempoControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA54AFE280366A9005EAAD1 /* TempoControl.swift */; };
+		0FB1071C2806F36700F743B3 /* TapButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1071B2806F36700F743B3 /* TapButtonView.swift */; };
+		0FB1071D2806F36700F743B3 /* TapButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1071B2806F36700F743B3 /* TapButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F4B6FA32805B32E006BB31F /* CustomSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliderView.swift; sourceTree = "<group>"; };
 		0F7D7FA12803473300FA8336 /* RhythmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmApp.swift; sourceTree = "<group>"; };
 		0F7D7FA22803473300FA8336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0F7D7FA32803473800FA8336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,7 +40,10 @@
 		0F7D7FC1280348DA00FA8336 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = click.mp3; path = ../../ClikMetronom/ClikMetronom/Resurce/click.mp3; sourceTree = "<group>"; };
 		0F7D7FC4280348F200FA8336 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		0F7D7FC628034A1200FA8336 /* AudioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControl.swift; sourceTree = "<group>"; };
+		0F89821F280717220019D066 /* PlayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
+		0F8982222807511E0019D066 /* SizePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePickerView.swift; sourceTree = "<group>"; };
 		0FA54AFE280366A9005EAAD1 /* TempoControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoControl.swift; sourceTree = "<group>"; };
+		0FB1071B2806F36700F743B3 /* TapButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,7 @@
 		0F7D7F9B2803473200FA8336 = {
 			isa = PBXGroup;
 			children = (
+				0F7D7FC4280348F200FA8336 /* click.mp3 */,
 				0F7D7FA02803473300FA8336 /* Shared */,
 				0F7D7FAF2803473800FA8336 /* macOS */,
 				0F7D7FA92803473800FA8336 /* Products */,
@@ -65,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				0F7D7FA12803473300FA8336 /* RhythmApp.swift */,
-				0F7D7FC0280347E100FA8336 /* Resource */,
 				0F7D7FBF280347D700FA8336 /* View */,
 				0F7D7FC52803499900FA8336 /* Management */,
 				0F7D7FA32803473800FA8336 /* Assets.xcassets */,
@@ -95,16 +107,12 @@
 			isa = PBXGroup;
 			children = (
 				0F7D7FA22803473300FA8336 /* ContentView.swift */,
+				0F8982222807511E0019D066 /* SizePickerView.swift */,
+				0F4B6FA32805B32E006BB31F /* CustomSliderView.swift */,
+				0FB1071B2806F36700F743B3 /* TapButtonView.swift */,
+				0F89821F280717220019D066 /* PlayButtonView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0F7D7FC0280347E100FA8336 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				0F7D7FC4280348F200FA8336 /* click.mp3 */,
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		0F7D7FC52803499900FA8336 /* Management */ = {
@@ -217,8 +225,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F7D7FB32803473800FA8336 /* ContentView.swift in Sources */,
+				0F4B6FA42805B32E006BB31F /* CustomSliderView.swift in Sources */,
 				0F7D7FB12803473800FA8336 /* RhythmApp.swift in Sources */,
+				0F8982232807511E0019D066 /* SizePickerView.swift in Sources */,
+				0FB1071C2806F36700F743B3 /* TapButtonView.swift in Sources */,
 				0F7D7FC728034A1200FA8336 /* AudioControl.swift in Sources */,
+				0F898220280717220019D066 /* PlayButtonView.swift in Sources */,
 				0FA54AFF280366A9005EAAD1 /* TempoControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,8 +240,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F7D7FB42803473800FA8336 /* ContentView.swift in Sources */,
+				0F4B6FA52805B32E006BB31F /* CustomSliderView.swift in Sources */,
 				0F7D7FB22803473800FA8336 /* RhythmApp.swift in Sources */,
+				0F8982242807511E0019D066 /* SizePickerView.swift in Sources */,
+				0FB1071D2806F36700F743B3 /* TapButtonView.swift in Sources */,
 				0F7D7FC828034A1200FA8336 /* AudioControl.swift in Sources */,
+				0F898221280717220019D066 /* PlayButtonView.swift in Sources */,
 				0FA54B00280366A9005EAAD1 /* TempoControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

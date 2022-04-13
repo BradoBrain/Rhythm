@@ -11,7 +11,11 @@ import SwiftUI
 struct RhythmApp: App {
     var body: some Scene {
         WindowGroup {
+            #if os(macOS)
+            ContentView().frame(width: 500, height: 500, alignment: .center)
+            #else
             ContentView()
+            #endif
         }
     }
 }
