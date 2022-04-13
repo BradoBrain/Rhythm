@@ -45,21 +45,21 @@ struct CustomSliderView: View {
                 .gesture(DragGesture(minimumDistance: 0.0)
                     .onChanged{ value in
                         withAnimation(.spring()) {
-                        change(location: value.location)
-                    }
+                            change(location: value.location)
+                        }
                     })
             // Ukrainian flag circle
             ZStack {
-            Circle()
-                .trim(from: 0.0, to: 0.5)
-                .stroke(Color.blue, lineWidth: 5)
-                .frame(width: config.radius * 2.5, height: config.radius * 2.5)
-                .rotationEffect(.degrees(180))
-            
-            Circle()
-                .trim(from: 0.0, to: 0.5)
-                .stroke(Color.yellow, lineWidth: 5)
-                .frame(width: config.radius * 2.5, height: config.radius * 2.5)
+                Circle()
+                    .trim(from: 0.0, to: 0.5)
+                    .stroke(Color.blue, lineWidth: 5)
+                    .frame(width: config.radius * 2.5, height: config.radius * 2.5)
+                    .rotationEffect(.degrees(180))
+                
+                Circle()
+                    .trim(from: 0.0, to: 0.5)
+                    .stroke(Color.yellow, lineWidth: 5)
+                    .frame(width: config.radius * 2.5, height: config.radius * 2.5)
             }
             
             VStack {

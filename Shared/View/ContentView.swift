@@ -11,38 +11,16 @@ import Foundation
 
 
 struct ContentView: View {
-    // ???
-    enum Tempo: String, CaseIterable, Identifiable {
-        case tempo0 = "Customize"
-        case tempo1 = "60"
-        case tempo2 = "80"
-        case tempo3 = "96"
-        case tempo4 = "108"
-        case tempo5 = "120"
-        case tempo6 = "144"
-        
-        var id: String { self.rawValue }
-    }
-    
     @StateObject private var tempoManager: TempoControl = TempoControl()
+    
+    @State private var isOn: Bool = false
+    @State var beatValue: CGFloat = 100
+    @State private var isEditing: Bool = false
     
     let audioManager: AudioControl = {
         let lowUrl = Bundle.main.url(forResource: "click", withExtension: "mp3")
         return AudioControl(clikFile: lowUrl!)
     }()
-    
-    @State private var isOn: Bool = false
-    @State private var pickerTempo: String = Tempo.tempo0.rawValue
-//    @State private var sliderTempo: UInt32 = 0
-    @State var beatValue: CGFloat = 100
-    
-    @State private var audioPlayer: AVAudioPlayer!
-    
-    
-     @State private var isEditing: Bool = false
-    
-    
-    
     
     var body: some View {
         ZStack {

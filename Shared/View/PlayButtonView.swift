@@ -11,12 +11,11 @@ struct PlayButtonView: View {
     @State var symbolName: String
     
     var body: some View {
-            Image(systemName: symbolName)
-                    .padding()
-                    .frame(width: 70, height: 70)
-                    .background(.gray.opacity(0.8))
-                    .cornerRadius(16)
-                   // .foregroundColor(.white)
+        Image(systemName: symbolName)
+            .padding()
+            .frame(width: 70, height: 70)
+            .background(.gray.opacity(0.8))
+            .cornerRadius(16)
     }
 }
 
