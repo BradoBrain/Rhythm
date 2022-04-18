@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayButtonView: View {
     @State var symbolName: String
-    
+
     var body: some View {
         Image(systemName: symbolName)
             .padding()
@@ -22,5 +22,6 @@ struct PlayButtonView: View {
 struct PlayButtonView_Previews: PreviewProvider {
     static var previews: some View {
         PlayButtonView(symbolName: "playpause")
+            .previewLayout(.sizeThatFits)
     }
 }

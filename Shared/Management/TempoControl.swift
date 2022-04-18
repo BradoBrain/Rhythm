@@ -37,5 +37,4 @@ class TempoControl: ObservableObject {
                 return "Larghissimo"
         }
     }
-    
 }

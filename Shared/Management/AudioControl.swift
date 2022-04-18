@@ -25,22 +25,23 @@ class AudioControl {
         
         try! audioEngine.start()
         
+#if os(macOS)
+#else
         // To play sound when silent mode on device
         try! AVAudioSession.sharedInstance().setCategory(.playback)
+#endif
     }
+    
     // Compute bar buffer
     private func barBuffer(bpm: UInt32) -> AVAudioPCMBuffer {
         clickFile.framePosition = 0
         
-        //Длина одного beat
         let beatLength = AVAudioFrameCount(UInt32(clickFile.processingFormat.sampleRate) * 60 / bpm)
         
-        //Длина одного click
         let clickBuffer = AVAudioPCMBuffer(pcmFormat: clickFile.processingFormat, frameCapacity: beatLength)!
         try! clickFile.read(into: clickBuffer)
         clickBuffer.frameLength = beatLength
         
-        // Длина одного такта (bar)
         let barBuffer = AVAudioPCMBuffer(pcmFormat: clickFile.processingFormat, frameCapacity: 4 * beatLength)!
         barBuffer.frameLength = 4 * beatLength
         
@@ -74,5 +75,4 @@ class AudioControl {
     func stop() {
         audioPlayer.stop()
     }
-    
 }

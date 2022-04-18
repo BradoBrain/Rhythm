@@ -23,5 +23,6 @@ struct TapButtonView: View {
 struct CustomButtonView_Previews: PreviewProvider {
     static var previews: some View {
         TapButtonView(buttonName: "Tap")
+            .previewLayout(.sizeThatFits)
     }
 }
