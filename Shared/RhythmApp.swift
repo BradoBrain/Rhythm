@@ -13,7 +13,7 @@ struct RhythmApp: App {
         WindowGroup {
             #if os(macOS)
             ContentView(beatValue: 100)
-                .frame(width: 500, height: 500, alignment: .center)
+                .frame(width: 600, height: 600, alignment: .center)
             #else
             ContentView(beatValue: 100)
             #endif

@@ -9,25 +9,23 @@ import SwiftUI
 import AVFoundation
 import Foundation
 
-
 struct ContentView: View {
     @StateObject private var tempoManager: TempoControl = TempoControl()
     
     @State var beatValue: CGFloat = 100
     
     @State private var isOn: Bool = false
-    @State private var toSettings = false
+
     
     // For tap function
     @State private var timeOutInterval = 5.0
     @State private var minTaps = 3
     @State private var taps: [NSDate] = []
     @State private var calculatedbpm = 0
-    @State private var timeOut = 5
-    @State private var minimumTaps = 3
+    @State private var timeOut = 3
     
     let audioManager: AudioControl = {
-        let lowUrl = Bundle.main.url(forResource: "click", withExtension: "mp3")!
+        let lowUrl = Bundle.main.url(forResource: "Click", withExtension: "mp3")!
         return AudioControl(clikFile: lowUrl)
     }()
     
@@ -40,7 +38,7 @@ struct ContentView: View {
                 HStack {
                     Text("Practice").bold().font(.largeTitle).foregroundColor(Color("Blue"))
                     Text("To Fight").bold().font(.largeTitle).foregroundColor(Color("Yellow"))
-                }
+                } .padding(.top, 25)
                 
                 Spacer()
                 Spacer()
@@ -57,6 +55,22 @@ struct ContentView: View {
                         .padding(25)
                     
                     HStack {
+                        #if os(macOS)
+                        Button(action: {
+                            beatValue -= CGFloat(1)
+                        }, label: {
+                            Image(systemName: "minus")
+                                .padding()
+                                .clipShape(Circle())
+                                .background(Color("Background")
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15))
+                                .foregroundColor(.white)
+                                .font(.title2)
+                                
+                        }) .buttonStyle(PlainButtonStyle())
+                        .padding(.horizontal, 40)
+                        #else
                         Button(action: {
                             beatValue -= CGFloat(1)
                         }, label: {
@@ -65,7 +79,23 @@ struct ContentView: View {
                                 .font(.title2)
                                 .frame(width: 50, height: 50)
                         }) .padding(.horizontal, 40)
+                        #endif
                         
+                        #if os(macOS)
+                        Button(action: {
+                            beatValue += CGFloat(1)
+                        }, label: {
+                            Image(systemName: "plus")
+                                .padding()
+                                .clipShape(Circle())
+                                .background(Color("Background")
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15))
+                                .foregroundColor(.white)
+                                .font(.title2)
+                        }) .buttonStyle(PlainButtonStyle())
+                        .padding(.horizontal, 40)
+                        #else
                         Button(action: {
                             beatValue += CGFloat(1)
                         }, label: {
@@ -73,46 +103,29 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .font(.title2)
                                 .frame(width: 50, height: 50)
-                        }) .padding(.horizontal, 40)
+                        })
+                        .padding(.horizontal, 40)
+                        #endif
                     }
                 }
                 
                 // Play, Tap and Settings Buttons
                 HStack {
                     // Play/Pause button
-                    Button(action: {
+                    Button("", action: {
                         isOn.toggle()
                         isOn ? audioManager.play(bpm: beatValue) : audioManager.stop()
-                    }, label: {
-                        PlayButtonView(symbolName: "playpause")
-                            .foregroundColor(isOn ? Color("Blue") : .white)
                     })
+                        .buttonStyle(PlayButtonStyle(symbolName: "playpause"))
+                        .foregroundColor(isOn ? Color("Blue") : .white)
                     
                     Spacer()
                     
                     // Tap button
-                    Button(action: {
+                    Button("", action: {
                         tapValueFunc()
-                    }, label: {
-                        TapButtonView(buttonName: "Tap")
                     })
-                    
-                    Spacer()
-                    
-                    // Settings button
-                    Button(action: {
-                        self.toSettings.toggle()
-                    }, label: {
-                        Image(systemName: "gear")
-                            .padding()
-                            .font(.title)
-                            .frame(width: 70, height: 70)
-                            .background(.gray.opacity(0.8))
-                            .cornerRadius(16)
-                            .foregroundColor(.white)
-                    }) .sheet(isPresented: $toSettings) {
-                        NavigationView { SettingsView() }
-                    }
+                        .buttonStyle(TapButtonStyle(buttonName: "Tap"))
                 }
                 .padding(.horizontal, 25)
                 .padding(.bottom, 40)
@@ -147,10 +160,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(beatValue: 100)
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
     }
 }
-
-
-
-

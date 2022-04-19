@@ -45,9 +45,9 @@ struct CustomSliderView: View {
                 .rotationEffect(Angle.degrees(Double(beatValue / 1.12)))
                 .gesture(DragGesture(minimumDistance: 0.0)
                     .onChanged{ value in
-                        withAnimation(.linear(duration: 0.5)) {
+                        //withAnimation(.linear(duration: 0.5)) {
                             change(location: value.location)
-                        }
+                        //}
                     })
             
             // Flag circle
@@ -55,12 +55,14 @@ struct CustomSliderView: View {
                 Circle()
                     .trim(from: 0.0, to: 0.5)
                     .stroke(beatValue > 200 ? Color("Red") : Color("Blue"), lineWidth: 5)
+                    .animation(.easeInOut(duration: 0.5), value: beatValue)
                     .frame(width: config.radius * 2.5, height: config.radius * 2.5)
                     .rotationEffect(.degrees(180))
                 
                 Circle()
                     .trim(from: 0.0, to: 0.5)
                     .stroke(beatValue > 200 ? Color(.black) : Color("Yellow"), lineWidth: 5)
+                    .animation(.easeInOut(duration: 0.5), value: beatValue)
                     .frame(width: config.radius * 2.5, height: config.radius * 2.5)
             }
             
