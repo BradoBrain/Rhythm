@@ -19,6 +19,8 @@
 		0F7D7FC828034A1200FA8336 /* AudioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7D7FC628034A1200FA8336 /* AudioControl.swift */; };
 		0F898220280717220019D066 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F89821F280717220019D066 /* PlayButtonView.swift */; };
 		0F898221280717220019D066 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F89821F280717220019D066 /* PlayButtonView.swift */; };
+		0F8E37F62811711D00E1EF41 /* AnimatedLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E37F52811711D00E1EF41 /* AnimatedLogoView.swift */; };
+		0F8E37F72811711D00E1EF41 /* AnimatedLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8E37F52811711D00E1EF41 /* AnimatedLogoView.swift */; };
 		0FA281B2280DDB9C00DDA86E /* Click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0FA281AB280DDB9C00DDA86E /* Click.mp3 */; };
 		0FA281B3280DDB9C00DDA86E /* Click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0FA281AB280DDB9C00DDA86E /* Click.mp3 */; };
 		0FA54AFF280366A9005EAAD1 /* TempoControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA54AFE280366A9005EAAD1 /* TempoControl.swift */; };
@@ -37,6 +39,7 @@
 		0F7D7FB02803473800FA8336 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		0F7D7FC628034A1200FA8336 /* AudioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControl.swift; sourceTree = "<group>"; };
 		0F89821F280717220019D066 /* PlayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
+		0F8E37F52811711D00E1EF41 /* AnimatedLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLogoView.swift; sourceTree = "<group>"; };
 		0FA281AB280DDB9C00DDA86E /* Click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Click.mp3; path = ../../../../Music/ForMetronome/Click.mp3; sourceTree = "<group>"; };
 		0FA54AFE280366A9005EAAD1 /* TempoControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoControl.swift; sourceTree = "<group>"; };
 		0FB1071B2806F36700F743B3 /* TapButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButtonView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				0F7D7FA22803473300FA8336 /* ContentView.swift */,
+				0F8E37F52811711D00E1EF41 /* AnimatedLogoView.swift */,
 				0F4B6FA32805B32E006BB31F /* CustomSliderView.swift */,
 			);
 			path = View;
@@ -226,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F8E37F62811711D00E1EF41 /* AnimatedLogoView.swift in Sources */,
 				0F7D7FB32803473800FA8336 /* ContentView.swift in Sources */,
 				0F4B6FA42805B32E006BB31F /* CustomSliderView.swift in Sources */,
 				0F7D7FB12803473800FA8336 /* RhythmApp.swift in Sources */,
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F8E37F72811711D00E1EF41 /* AnimatedLogoView.swift in Sources */,
 				0F7D7FB42803473800FA8336 /* ContentView.swift in Sources */,
 				0F4B6FA52805B32E006BB31F /* CustomSliderView.swift in Sources */,
 				0F7D7FB22803473800FA8336 /* RhythmApp.swift in Sources */,
@@ -375,6 +381,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -405,6 +412,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;

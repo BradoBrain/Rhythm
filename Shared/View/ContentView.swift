@@ -15,7 +15,9 @@ struct ContentView: View {
     @State var beatValue: CGFloat = 100
     
     @State private var isOn: Bool = false
-
+    @State private var startAnimation = false
+    @State private var firstShow = true
+    @State private var secondShow = true
     
     // For tap function
     @State private var timeOutInterval = 5.0
@@ -30,105 +32,142 @@ struct ContentView: View {
     }()
     
     var body: some View {
-        ZStack {
-            Color("Background").ignoresSafeArea()
-            
-            VStack {
-                // Title
-                HStack {
-                    Text("Practice").bold().font(.largeTitle).foregroundColor(Color("Blue"))
-                    Text("To Fight").bold().font(.largeTitle).foregroundColor(Color("Yellow"))
-                } .padding(.top, 25)
-                
-                Spacer()
-                Spacer()
-                
-                // Name of tempo from TempoControl
-                Text("\(tempoManager.whichTempoMarking(tempo: beatValue))")
-                    .foregroundColor(.white)
-                    .font(.title3)
-                    .padding()
-                
-                // Slider to change bpm from CustomSliderView
+        VStack {
+            ZStack {
                 ZStack {
-                    CustomSliderView(beatValue: $beatValue)
-                        .padding(25)
+                    Color("Background").ignoresSafeArea()
                     
-                    HStack {
-                        #if os(macOS)
-                        Button(action: {
-                            beatValue -= CGFloat(1)
-                        }, label: {
-                            Image(systemName: "minus")
-                                .padding()
-                                .clipShape(Circle())
-                                .background(Color("Background")
-                                    .frame(width: 30, height: 30)
-                                    .cornerRadius(15))
-                                .foregroundColor(.white)
-                                .font(.title2)
-                                
-                        }) .buttonStyle(PlainButtonStyle())
-                        .padding(.horizontal, 40)
-                        #else
-                        Button(action: {
-                            beatValue -= CGFloat(1)
-                        }, label: {
-                            Image(systemName: "minus")
-                                .foregroundColor(.white)
-                                .font(.title2)
-                                .frame(width: 50, height: 50)
-                        }) .padding(.horizontal, 40)
-                        #endif
+                    VStack {
+                        // Title
+                        HStack {
+                            Text("Practice").bold().font(.largeTitle).foregroundColor(Color("Blue"))
+                            Text("To Fight").bold().font(.largeTitle).foregroundColor(Color("Yellow"))
+                        } .padding(.top, 25)
                         
-                        #if os(macOS)
-                        Button(action: {
-                            beatValue += CGFloat(1)
-                        }, label: {
-                            Image(systemName: "plus")
-                                .padding()
-                                .clipShape(Circle())
-                                .background(Color("Background")
-                                    .frame(width: 30, height: 30)
-                                    .cornerRadius(15))
-                                .foregroundColor(.white)
-                                .font(.title2)
-                        }) .buttonStyle(PlainButtonStyle())
-                        .padding(.horizontal, 40)
-                        #else
-                        Button(action: {
-                            beatValue += CGFloat(1)
-                        }, label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(.white)
-                                .font(.title2)
-                                .frame(width: 50, height: 50)
-                        })
-                        .padding(.horizontal, 40)
-                        #endif
+                        Spacer()
+                        Spacer()
+                        
+                        // Name of tempo from TempoControl
+                        Text("\(tempoManager.whichTempoMarking(tempo: beatValue))")
+                            .foregroundColor(.white)
+                            .font(.title3)
+                            .padding()
+                        
+                        // Slider to change bpm from CustomSliderView
+                        ZStack {
+                            CustomSliderView(beatValue: $beatValue)
+                                .padding(25)
+                            
+                            HStack {
+#if os(macOS)
+                                Button(action: {
+                                    beatValue -= CGFloat(1)
+                                }, label: {
+                                    Image(systemName: "minus")
+                                        .padding()
+                                        .clipShape(Circle())
+                                        .background(Color("Background")
+                                            .frame(width: 30, height: 30)
+                                            .cornerRadius(15))
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                    
+                                }) .buttonStyle(PlainButtonStyle())
+                                    .padding(.horizontal, 40)
+#else
+                                Button(action: {
+                                    beatValue -= CGFloat(1)
+                                }, label: {
+                                    Image(systemName: "minus")
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                        .frame(width: 50, height: 50)
+                                }) .padding(.horizontal, 40)
+#endif
+                                
+#if os(macOS)
+                                Button(action: {
+                                    beatValue += CGFloat(1)
+                                }, label: {
+                                    Image(systemName: "plus")
+                                        .padding()
+                                        .clipShape(Circle())
+                                        .background(Color("Background")
+                                            .frame(width: 30, height: 30)
+                                            .cornerRadius(15))
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                }) .buttonStyle(PlainButtonStyle())
+                                    .padding(.horizontal, 40)
+#else
+                                Button(action: {
+                                    beatValue += CGFloat(1)
+                                }, label: {
+                                    Image(systemName: "plus")
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                        .frame(width: 50, height: 50)
+                                })
+                                .padding(.horizontal, 40)
+#endif
+                            }
+                        }
+                        
+                        // Play, Tap and Settings Buttons
+                        HStack {
+                            // Play/Pause button
+                            Button("", action: {
+                                isOn.toggle()
+                                isOn ? audioManager.play(bpm: beatValue) : audioManager.stop()
+                            })
+                            .buttonStyle(PlayButtonStyle(symbolName: "playpause"))
+                            .foregroundColor(isOn ? Color("Blue") : .white)
+                            
+                            Spacer()
+                            
+                            // Tap button
+                            Button("", action: {
+                                tapValueFunc()
+                            })
+                            .buttonStyle(TapButtonStyle(buttonName: "Tap"))
+                        }
+                        .padding(.horizontal, 25)
+                        .padding(.bottom, 40)
                     }
                 }
                 
-                // Play, Tap and Settings Buttons
-                HStack {
-                    // Play/Pause button
-                    Button("", action: {
-                        isOn.toggle()
-                        isOn ? audioManager.play(bpm: beatValue) : audioManager.stop()
-                    })
-                        .buttonStyle(PlayButtonStyle(symbolName: "playpause"))
-                        .foregroundColor(isOn ? Color("Blue") : .white)
+                ZStack {
+                    Color("Background")
+                    
+                    HStack {
+                        Text("Save").bold().font(.largeTitle).foregroundColor(Color("Blue"))
+                        Text("Lives").bold().font(.largeTitle).foregroundColor(Color("Yellow"))
+                    } .padding(.top, 25)
                     
                     Spacer()
-                    
-                    // Tap button
-                    Button("", action: {
-                        tapValueFunc()
-                    })
-                        .buttonStyle(TapButtonStyle(buttonName: "Tap"))
                 }
-                .padding(.horizontal, 25)
-                .padding(.bottom, 40)
+                .ignoresSafeArea(.all)
+                .animation(.easeIn, value: secondShow)
+                .opacity(secondShow ? 1 : 0)
+                
+                ZStack {
+                    AnimatedLogoView()
+                }
+                .animation(.linear(duration: 0.1), value: firstShow)
+                .opacity(firstShow ? 1 : 0)
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                startAnimation.toggle()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                firstShow.toggle()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+                secondShow.toggle()
             }
         }
     }
@@ -161,5 +200,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(beatValue: 100)
             .preferredColorScheme(.light)
+            .previewInterfaceOrientation(.portrait)
     }
 }
