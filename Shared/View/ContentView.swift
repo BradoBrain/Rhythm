@@ -151,22 +151,25 @@ struct ContentView: View {
                 .opacity(secondShow ? 1 : 0)
                 
                 ZStack {
-                    AnimatedLogoView()
+                    LogoView()
+                        .frame(width: 250, height: 250)
+                        .scaleEffect(startAnimation ? 1.5 : 1)
+                        .animation(.linear(duration: 2), value: startAnimation)
                 }
-                .animation(.linear(duration: 0.1), value: firstShow)
+                .animation(.linear, value: firstShow)
                 .opacity(firstShow ? 1 : 0)
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 startAnimation.toggle()
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                 firstShow.toggle()
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 secondShow.toggle()
             }
         }
@@ -199,7 +202,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(beatValue: 100)
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.portrait)
     }
 }
